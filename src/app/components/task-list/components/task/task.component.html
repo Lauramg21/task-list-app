@@ -1,0 +1,17 @@
+<div class="task row g-0 border rounded mb-2 p-2">
+    <div class="col-2 text-center">
+        <span>{{task.date | date: 'dd/MM/YYYY'}}</span>
+    </div>
+    <div class="text-truncate" [ngClass]="{
+        'col-10 text-decoration-line-through': task.completed,
+        'col-8' : !task.completed
+    }" [title]="task.description">
+        <span>{{task.description}}</span>
+    </div>
+    @if(!task.completed){
+    <div class="col-2 text-end">
+        <i class="task__icon bi bi-check-lg text-success" (click)="completeTask()"></i>
+        <i class="task__icon bi bi-trash3-fill text-danger" (click)="removeTask()"></i>
+    </div>
+}
+</div>
